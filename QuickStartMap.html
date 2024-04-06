@@ -24,9 +24,7 @@
 
   <body>
     <div id='map'body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }>
-      
-    </div>
+        #map { position:absolute; top:0; bottom:0; width:100%; }></div>
     
     <!--  Insert the tile div here (part V) -->
 
@@ -44,10 +42,19 @@
    
     
 
-        // Add popup markers here  (part IV)
+ var popup = new mapboxgl.Popup({ offset: 25 })
+     .setHTML('Hello World. Welcome to Portland!'); var marker = new mapboxgl.Marker()
+     .setLngLat([-122.6788, 45.5212])
+     .setPopup(popup)
+     .addTo(map)        // Add popup markers here  (part IV)
         
         // Add any other variables such as markers here (part III)
-
+var marker = new mapboxgl.Marker({color:'red'})
+   .setLngLat([-122.6788, 45.5212]) // starting position [lng, lat] 
+   .addTo(map);
+var marker = new mapboxgl.Marker2({color:'red'})
+   .setLngLat([-122.69, 45.55]) // starting position [lng, lat] 
+   .addTo(map);      
         // Add optional advanced "On load" function here
         
     </script>
