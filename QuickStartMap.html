@@ -6,50 +6,52 @@
     <title>University of Oregon Mapping</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.titles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-    
-
-
-          
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
-    
-
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; height:100%;}
-        
-
-
     </style>
   </head>
 
   <body>
-    <div id='map'body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; height:100%;}></div>
+    <div id='map'></div>
     
-    <!--  Insert the tile div here (part V) -->
+    <div id='title'>
+      <h1>My Map of Portland</h1>
+      <h1>By: Pete Warren</h1>
+      #title { z-index: 9999;
+        background-color: white;
+        opacity: 80%;
+        text-align: center
+      }
+    </div>
+      <!--  Insert the tile div here (part V) -->
 
     <script>
         // Insert the JavaScript within the <script> tags, within the body   
         mapboxgl.accessToken = 'pk.eyJ1IjoidW9wdyIsImEiOiJjbHVuM2kzeGwxa2NvMnBudTJ6OTgwZ253In0.JS5u3qvvB-g6IIEzFANlEw';// Start with the Mapbox access token here
  
- var map = new mapboxgl.Map({
+  var map = new mapboxgl.Map({
      container: 'map', // id of a div on your page, where the map will be inserted
      style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
      center: [-122.6788, 45.5212], // starting position [lng, lat] eg. [-122.6788, 45.5212]
      zoom: 11 // starting zoom 
  });  
         // Then initialize the map here
-   
-    
 
- var popup = new mapboxgl.Popup({ offset: 25 })
-     .setHTML('Hello World. Welcome to Portland!'); var marker = new mapboxgl.Marker()
+  var popup = new mapboxgl.Popup({ offset: 25 })
+     .setHTML('Hello World. Welcome to Portland!'); 
+  var marker = new mapboxgl.Marker()
      .setLngLat([-122.6788, 45.5212])
      .setPopup(popup)
-     .addTo(map)        // Add popup markers here  (part IV)
+     .addTo(map); 
+  var popup_layer = new mapboxgl.Popup({closeOnClick: false}) 
+     .setLngLat([-122.64, 45.5]) //popup coordinates
+     .setHTML('<h1>Hi Portland!</h1>') //popup text
+     .addTo(map);// Add popup markers here  (part IV)
         
         // Add any other variables such as markers here (part III)
-var marker = new mapboxgl.Marker({color:'red'})
+  var marker = new mapboxgl.Marker({color:'red'})
    .setLngLat([-122.6788, 45.5212]) // starting position [lng, lat] 
    .addTo(map);
 var marker = new mapboxgl.Marker2({color:'red'})
