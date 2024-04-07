@@ -9,6 +9,8 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+     </style>
         #map { position:absolute; top:0; bottom:0; width:100%; height:100%;}
     </style>
   </head>
@@ -16,13 +18,13 @@
   <body>
       
       <div id='title'>
-          <h1>My Map of Portland</h1>
+          <h1>Map of Portland, OR, USA</h1>
           <h1>By: Pete Warren</h1>
-            #title { z-index: 9999;
-            background-color: white;
-            opacity: 80%;
+        #title { z-index: 9999;
+            background-color: gray
+            opacity: 90%;
             text-align: center
-      ;}
+          }
         </div>
       <!--  Insert the tile div here (part V) -->
       <div id='map'body { margin:0; padding:0; }
@@ -33,10 +35,10 @@
         mapboxgl.accessToken = 'pk.eyJ1IjoidW9wdyIsImEiOiJjbHVseWtjNnoxMTlqMmlxcHgycjM2emtpIn0.XiexB6tNU_fnFtl9DT97wA'; <!-- // Start with the Mapbox access token here -->
  
       var map = new mapboxgl.Map({
-       container: 'map', <!-- // id of a div on your page, where the map will be inserted -->
-       style: 'mapbox://styles/mapbox/streets-v11', <!-- // stylesheet location -->
-       center: [-122.6788, 45.5212], <!-- // starting position [lng, lat] eg. [-122.6788, 45.5212] -->
-       zoom: 11 <!-- // starting zoom -->
+      container: 'map', // id of a div on your page, where the map will be inserted -->
+      style: 'mapbox://styles/umapbox://styles/mapbox/satellite-v9',
+      center: [-122.6788, 45.5212], 
+      zoom: 11 
   });  
         // Then initialize the map here
 
@@ -55,12 +57,23 @@
   var marker = new mapboxgl.Marker({color:'red'})
    .setLngLat([-122.6788, 45.5212]) // starting position [lng, lat] 
    .addTo(map);
-  var marker = new mapboxgl.Marker2({color:'red'})
+  var marker = new mapboxgl.Marker2({color:'green'})
    .setLngLat([-122.69, 45.55]) // starting position [lng, lat] 
-   .addTo(map);      
-        // Add optional advanced "On load" function here
-        
-    </script>
+   .addTo(map);  
+  var popup_layer_voodoo=new mapboxgl.Popup({
+    closeOnClick: true, anchor: 'top-left'
+  })     
+  .setLngLat([-122.673308,45.522675])
+  .setHTML('<a href="https://www.voodoodoughnut.com">voodoo donuts</a>')        // Add optional advanced "On load" function here
+  .addTo(map);   
+  
+  var popup_layer_Mall=new mapboxgl.Popup({
+    closeOnClick: false, anchor: 'top-left'
+  })
+  .setLngLat([45.457895546127766, -122.782077856635])
+  .setHTML('<a href="https://www.https://www.shopwashingtonsquare.com">Washington Square Mall</a>')
+  .addTo(map);
+</script>
 
   </body>
 
